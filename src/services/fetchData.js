@@ -44,7 +44,7 @@ async function fetchWeatherData(latitude, longitude) {
     );
     url.searchParams.set(
       "daily",
-      "weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max",
+      "weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,wind_speed_10m_max",
     );
     url.searchParams.set("hourly", "temperature_2m,weather_code");
     url.searchParams.set("timezone", "auto");
@@ -67,4 +67,4 @@ async function fetchWeatherData(latitude, longitude) {
     throw error;
   }
 }
-export default { fetchGeoData, fetchWeatherData };
+export { fetchGeoData, fetchWeatherData };

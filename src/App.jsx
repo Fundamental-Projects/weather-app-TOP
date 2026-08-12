@@ -1,5 +1,5 @@
 import { formStyles } from "./styles/defaults/formStyles";
-import fetchGeoData from "./services/fetchData";
+import { fetchGeoData, fetchWeatherData } from "./services/fetchData";
 
 function App() {
   return (
