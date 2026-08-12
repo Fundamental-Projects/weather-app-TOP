@@ -14,8 +14,6 @@ async function fetchGeoData(searchTerm) {
       method: "GET",
     });
 
-    console.log(url.toString());
-
     const response = await fetch(requestUrl);
 
     if (!response.ok) {
@@ -41,14 +39,14 @@ async function fetchWeatherData(latitude, longitude) {
     url.searchParams.set("latitude", latitude);
     url.searchParams.set("longitude", longitude);
     url.searchParams.set(
-      "hourly",
-      "temperature_2m,relativehumidity_2m,apparent_temperature,precipitation,rain,snowfall,cloudcover,windspeed_10m",
+      "current",
+      "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
     );
     url.searchParams.set(
       "daily",
       "weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max",
     );
-    url.searchParams.set("current_weather", "true");
+    url.searchParams.set("hourly", "temperature_2m,weather_code");
     url.searchParams.set("timezone", "auto");
 
     const requestUrl = new Request(url, {
@@ -69,4 +67,4 @@ async function fetchWeatherData(latitude, longitude) {
     throw error;
   }
 }
-export default fetchGeoData;
+export default { fetchGeoData, fetchWeatherData };
