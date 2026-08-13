@@ -19,75 +19,75 @@
 // Her yolun literal olmasi Vite'in asset'leri production build'e almasini saglar.
 export const figmaAssets = Object.freeze({
   logo: new URL(
-    "../../fmSource/weather-app-main/assets/images/logo.svg",
+    "../../assets/images/logo.svg",
     import.meta.url,
   ).href,
   todayLarge: new URL(
-    "../../fmSource/weather-app-main/assets/images/bg-today-large.svg",
+    "../../assets/images/bg-today-large.svg",
     import.meta.url,
   ).href,
   todaySmall: new URL(
-    "../../fmSource/weather-app-main/assets/images/bg-today-small.svg",
+    "../../assets/images/bg-today-small.svg",
     import.meta.url,
   ).href,
   search: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-search.svg",
+    "../../assets/images/icon-search.svg",
     import.meta.url,
   ).href,
   units: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-units.svg",
+    "../../assets/images/icon-units.svg",
     import.meta.url,
   ).href,
   dropdown: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-dropdown.svg",
+    "../../assets/images/icon-dropdown.svg",
     import.meta.url,
   ).href,
   checkmark: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-checkmark.svg",
+    "../../assets/images/icon-checkmark.svg",
     import.meta.url,
   ).href,
   loading: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-loading.svg",
+    "../../assets/images/icon-loading.svg",
     import.meta.url,
   ).href,
   error: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-error.svg",
+    "../../assets/images/icon-error.svg",
     import.meta.url,
   ).href,
   retry: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-retry.svg",
+    "../../assets/images/icon-retry.svg",
     import.meta.url,
   ).href,
   drizzle: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-drizzle.webp",
+    "../../assets/images/icon-drizzle.webp",
     import.meta.url,
   ).href,
   fog: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-fog.webp",
+    "../../assets/images/icon-fog.webp",
     import.meta.url,
   ).href,
   overcast: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-overcast.webp",
+    "../../assets/images/icon-overcast.webp",
     import.meta.url,
   ).href,
   partlyCloudy: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-partly-cloudy.webp",
+    "../../assets/images/icon-partly-cloudy.webp",
     import.meta.url,
   ).href,
   rain: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-rain.webp",
+    "../../assets/images/icon-rain.webp",
     import.meta.url,
   ).href,
   snow: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-snow.webp",
+    "../../assets/images/icon-snow.webp",
     import.meta.url,
   ).href,
   storm: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-storm.webp",
+    "../../assets/images/icon-storm.webp",
     import.meta.url,
   ).href,
   sunny: new URL(
-    "../../fmSource/weather-app-main/assets/images/icon-sunny.webp",
+    "../../assets/images/icon-sunny.webp",
     import.meta.url,
   ).href,
 });

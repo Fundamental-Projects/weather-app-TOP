@@ -20,17 +20,23 @@ async function fetchGeoData(searchTerm) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    if (!searchTerm.trim()) {
+      console.log("No search term provided. Skipping fetch.");
+      return null;
+    }
+
     const data = await response.json();
 
-    console.log(data);
+    const result = await data.results[0];
 
-    return data;
+    console.log(result);
+
+    return result;
   } catch (error) {
     console.error("Error fetching geo data:", error);
     throw error;
   }
 }
-fetchGeoData("adana");
 
 async function fetchWeatherData(latitude, longitude) {
   try {
@@ -67,4 +73,13 @@ async function fetchWeatherData(latitude, longitude) {
     throw error;
   }
 }
-export { fetchGeoData, fetchWeatherData };
+
+async function fetchResult(searchTerm) {
+  const { latitude, longitude } = await fetchGeoData(searchTerm);
+  const data = await fetchWeatherData(latitude, longitude);
+
+  return data;
+}
+fetchResult("adana");
+
+export { fetchGeoData, fetchWeatherData, fetchResult };
