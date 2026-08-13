@@ -3,6 +3,11 @@ const WEATHER_BASE_URL = "https://api.open-meteo.com/v1/forecast";
 
 async function fetchGeoData(searchTerm) {
   try {
+    if (!searchTerm.trim()) {
+      console.log("No search term provided. Skipping fetch.");
+      return null;
+    }
+
     const url = new URL(BASE_URL);
 
     url.searchParams.set("name", searchTerm);
@@ -20,14 +25,11 @@ async function fetchGeoData(searchTerm) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    if (!searchTerm.trim()) {
-      console.log("No search term provided. Skipping fetch.");
-      return null;
-    }
-
     const data = await response.json();
 
-    const result = await data.results[0];
+    const result = data.results[0] ? data.results[0] : "Result not found";
+
+    console.log(result);
 
     return result;
   } catch (error) {
@@ -72,13 +74,21 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 async function fetchResult(searchTerm) {
-  const { latitude, longitude, name: city, country } = await fetchGeoData(searchTerm);
-  const data = await fetchWeatherData(latitude, longitude);
+  const {
+    latitude,
+    longitude,
+    name: city,
+    country,
+    timezone,
+    ...otherInfos
+  } = await fetchGeoData(searchTerm);
+  const location = { city, country, timezone };
+  const weather = await fetchWeatherData(latitude, longitude);
 
-  console.log(data, city, country);
+  console.log(location);
 
-  return { data, city, country };
+  return { location, weather };
 }
 fetchResult("adana");
 
-export { fetchGeoData, fetchWeatherData, fetchResult };
+export { fetchResult };
