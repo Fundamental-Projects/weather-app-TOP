@@ -23,59 +23,135 @@ function Header() {
           <img
             className={figmaTailwing.controls.unitsIcon}
             src={figmaAssets.units}
-            alt="chevron"
+            alt=""
           />
           Units
           <img
-            className={figmaTailwing.controls.chevron}
+            className={figmaTailwing.controls.unitsChevron}
             src={figmaAssets.dropdown}
-            alt="units"
+            alt=""
           />
         </button>
 
         {isUnitOpen && (
           <div
-            className={`${figmaTailwing.controls.menu} absolute right-0 top-[calc(100%+8px)]`}
+            className={`${figmaTailwing.controls.menu} absolute right-0 top-[calc(100%+10px)]`}
           >
-            <button type="button">Switch to Imperial</button>
+            <button className={figmaTailwing.controls.switchButton} type="button">
+              Switch to Imperial
+            </button>
 
-            <fieldset>
+            <fieldset className={figmaTailwing.controls.menuGroup}>
               <legend className={figmaTailwing.controls.menuLabel}>Temperature</legend>
 
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="temperature" value="celsius" defaultChecked />
-                Celsius
-              </label>
+              <div className={figmaTailwing.controls.menuOptions}>
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="temperature"
+                    value="celsius"
+                    defaultChecked
+                  />
+                  <span>Celsius (°C)</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
 
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="temperature" value="fahrenheit" />
-                Fahrenheit
-              </label>
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="temperature"
+                    value="fahrenheit"
+                  />
+                  <span>Fahrenheit (°F)</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
+              </div>
             </fieldset>
+            <div className={figmaTailwing.controls.menuDivider} aria-hidden="true" />
 
-            <fieldset>
+            <fieldset className={figmaTailwing.controls.menuGroup}>
               <legend className={figmaTailwing.controls.menuLabel}>Wind speed</legend>
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="windSpeed" value="km/h" defaultChecked />
-                km/h
-              </label>
 
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="windSpeed" value="mph" />
-                mph
-              </label>
+              <div className={figmaTailwing.controls.menuOptions}>
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="windSpeed"
+                    value="km/h"
+                    defaultChecked
+                  />
+                  <span>km/h</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
+
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="windSpeed"
+                    value="mph"
+                  />
+                  <span>mph</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
+              </div>
             </fieldset>
-            <fieldset>
-              <legend className={figmaTailwing.controls.menuLabel}>Precipitation</legend>
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="precipitation" value="mm" defaultChecked />
-                mm
-              </label>
+            <div className={figmaTailwing.controls.menuDivider} aria-hidden="true" />
 
-              <label className={figmaTailwing.controls.menuItem}>
-                <input type="radio" name="precipitation" value="inch" />
-                inch
-              </label>
+            <fieldset className={figmaTailwing.controls.menuGroup}>
+              <legend className={figmaTailwing.controls.menuLabel}>Precipitation</legend>
+
+              <div className={figmaTailwing.controls.menuOptions}>
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="precipitation"
+                    value="mm"
+                    defaultChecked
+                  />
+                  <span>Millimeters (mm)</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
+
+                <label className={figmaTailwing.controls.menuItem}>
+                  <input
+                    className={figmaTailwing.controls.radio}
+                    type="radio"
+                    name="precipitation"
+                    value="inch"
+                  />
+                  <span>Inches (in)</span>
+                  <img
+                    className={figmaTailwing.controls.checkmark}
+                    src={figmaAssets.checkmark}
+                    alt=""
+                  />
+                </label>
+              </div>
             </fieldset>
           </div>
         )}

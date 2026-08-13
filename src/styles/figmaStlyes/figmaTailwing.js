@@ -147,7 +147,7 @@ export const figmaTokens = Object.freeze({
     24: "24px",
     full: "999px",
   },
-  gradient: "linear-gradient(103deg, #4658D9 0%, #2B1B9C 100%)",
+  gradient: "linear-gradient(94deg, #4658D9 -8.59%, #2B1B9C 98.38%)",
   shadow: "0 8px 16px 0 rgba(2, 1, 44, 0.32)",
 });
 
@@ -166,16 +166,17 @@ export const figmaTailwing = Object.freeze({
   layout: {
     page: "min-h-screen bg-[#02012C] font-['DM_Sans'] text-white antialiased",
     canvas:
-      "mx-auto w-full max-w-[1440px] px-4 pb-12 pt-4 md:px-6 md:pt-6 min-[1200px]:px-[112px] min-[1200px]:pt-12",
+      "mx-auto w-full max-w-[1440px] px-4 pb-12 pt-4 md:px-6 md:pb-20 md:pt-6 min-[1440px]:px-[112px] min-[1440px]:pt-12",
     header: "flex h-[33px] w-full items-center justify-between md:h-[43px]",
     logo: "h-7 w-[138px] object-contain md:h-10 md:w-[197px]",
     title:
-      "mx-auto mt-12 w-full max-w-[343px] text-center font-['Bricolage_Grotesque'] text-[52px] font-bold leading-[1.2] md:max-w-[482px] min-[1200px]:mt-16 min-[1200px]:max-w-none",
+      "mx-auto w-full max-w-[343px] text-center font-['Bricolage_Grotesque'] text-[52px] font-bold leading-[1.2] md:max-w-[482px] min-[1440px]:max-w-[731px]",
     main:
-      "mx-auto mt-12 w-full max-w-[1216px] min-[1200px]:mt-16",
+      "mx-auto mt-12 w-full max-w-[343px] md:max-w-[720px] min-[1440px]:mt-16 min-[1440px]:max-w-[1216px]",
     content:
-      "mt-8 grid w-full grid-cols-1 gap-8 min-[1200px]:mt-12 min-[1200px]:grid-cols-[800px_384px]",
-    leftColumn: "flex min-w-0 flex-col gap-8 min-[1200px]:gap-12",
+      "mt-8 grid w-full grid-cols-1 gap-8 min-[1440px]:mt-12 min-[1440px]:grid-cols-[800px_384px]",
+    leftColumn: "flex min-w-0 flex-col gap-8 min-[1440px]:gap-12",
+    rightColumn: "min-w-0 w-full",
   },
 
   // FIGMA TYPOGRAPHY PRESET'LERI
@@ -198,55 +199,65 @@ export const figmaTailwing = Object.freeze({
   // ARAMA
   search: {
     form:
-      "relative mx-auto flex w-full flex-col gap-3 md:flex-row md:gap-4 min-[1200px]:w-[656px]",
+      "relative mx-auto mt-12 flex w-full flex-col gap-3 md:flex-row md:gap-4 min-[1440px]:mt-16 min-[1440px]:w-[656px]",
     fieldWrapper: "relative min-w-0 flex-1",
     icon:
-      "pointer-events-none absolute left-6 top-1/2 size-[21px] -translate-y-1/2",
+      "pointer-events-none absolute left-6 top-1/2 size-5 -translate-y-1/2",
     input:
       "h-14 w-full rounded-[12px] bg-[#262540] py-4 pl-[60px] pr-6 text-[20px] font-medium leading-[1.2] text-white outline-none placeholder:text-[#D4D3D9] hover:bg-[#302F4A] focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF]",
     button:
-      "inline-flex h-14 items-center justify-center rounded-[12px] bg-[#4658D9] px-6 text-[20px] font-semibold leading-[1.2] text-white hover:bg-[#2B1B9C] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#4658D9] md:w-[114px]",
+      "inline-flex h-14 items-center justify-center rounded-[12px] bg-[#4658D9] px-6 text-[20px] font-medium leading-[1.2] text-white hover:bg-[#2B1B9C] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#4658D9] md:w-[114px]",
     dropdown:
-      "absolute left-0 top-[64px] z-30 h-[184px] w-full rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)] md:w-[calc(100%-130px)] min-[1200px]:w-[526px]",
+      "absolute left-0 top-[64px] z-30 flex h-[184px] w-full flex-col items-start gap-1 rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)] md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
     option:
-      "flex h-[39px] w-full items-center rounded-[8px] px-2 text-left text-[18px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none",
+      "flex h-[39px] w-full items-center gap-[10px] rounded-[8px] px-2 py-[10px] text-left text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none",
     progress:
-      "absolute left-0 top-[64px] z-30 flex h-14 w-full items-center gap-3 rounded-[12px] bg-[#262540] px-4 text-[18px] font-medium leading-[1.2] text-white md:w-[calc(100%-130px)] min-[1200px]:w-[526px]",
+      "absolute left-0 top-[64px] z-30 flex h-[55px] w-full items-center gap-[10px] rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 text-[16px] font-medium leading-[1.2] text-white md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
   },
 
   // UST MENULER VE DROPDOWN DURUMLARI
   controls: {
     unitsButton:
-      "inline-flex h-[33px] w-[89px] items-center justify-center gap-2 rounded-[8px] bg-[#262540] px-3 text-[14px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF] md:h-[43px] md:w-[119px] md:gap-[10px] md:px-4 md:text-[16px]",
-    unitsIcon: "size-4 shrink-0",
-    chevron: "h-2 w-[13px] shrink-0",
+      "inline-flex h-[33px] w-[89px] items-center justify-center gap-[6px] rounded-[6px] bg-[#262540] px-[10px] py-2 text-[14px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF] md:h-[43px] md:w-[119px] md:gap-[10px] md:rounded-[8px] md:px-4 md:py-3 md:text-[16px]",
+    unitsIcon: "size-[14px] shrink-0 md:size-4",
+    unitsChevron:
+      "h-[14px] w-[9px] shrink-0 md:h-[18px] md:w-3",
+    chevron: "h-[18px] w-3 shrink-0",
     dayButton:
-      "inline-flex h-[37px] w-[120px] items-center justify-between gap-3 rounded-[8px] bg-[#3C3B5E] px-4 py-2 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF]",
+      "inline-flex h-[37px] w-[120px] items-center justify-between gap-3 rounded-[8px] bg-[#3C3B5E] px-4 py-2 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_#262540,0_0_0_3px_#FFFFFF]",
     menu:
-      "z-40 w-[214px] rounded-[12px] border border-[#3C3B5E] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)]",
+      "z-40 flex h-[412px] w-[214px] flex-col items-start gap-1 rounded-[12px] border border-[#3C3B5E] bg-[#262540] px-2 py-[6px] shadow-[0_8px_16px_0_rgba(2,1,44,0.32)]",
+    switchButton:
+      "flex h-[39px] w-full items-center rounded-[8px] px-2 py-[10px] text-left text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_#262540,0_0_0_3px_#FFFFFF]",
+    menuGroup:
+      "m-0 flex w-full min-w-0 flex-col items-start gap-2 border-0 p-0",
+    menuOptions: "flex w-full flex-col items-start gap-1",
     menuItem:
-      "flex h-[39px] w-full items-center justify-between rounded-[8px] px-2 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none",
+      "flex h-[39px] w-full cursor-pointer items-center gap-[10px] rounded-[8px] px-2 py-[10px] text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] has-[:checked]:bg-[#302F4A] focus-within:outline-none focus-within:shadow-[0_0_0_2px_#262540,0_0_0_3px_#FFFFFF]",
+    radio: "peer sr-only",
+    checkmark:
+      "invisible ml-auto h-[11px] w-[14px] shrink-0 peer-checked:visible",
     menuLabel:
-      "px-2 py-1 text-[14px] font-medium leading-[1.2] text-[#ACACB7]",
-    menuDivider: "my-1 h-px w-full bg-[#3C3B5E]",
+      "h-[23px] w-full px-2 pt-[6px] text-[14px] font-medium leading-[1.2] text-[#ACACB7]",
+    menuDivider: "h-px w-full shrink-0 bg-[#3C3B5E]",
   },
 
   // BUGUNUN HAVA KARTI
   weather: {
-    group: "flex flex-col gap-5 min-[1200px]:gap-8",
+    group: "flex flex-col gap-5 min-[1440px]:gap-8",
     todayCard:
       "relative isolate h-[286px] w-full overflow-hidden rounded-[20px] bg-cover bg-center [background-image:var(--weather-today-small)] md:[background-image:var(--weather-today-large)]",
     location:
       "absolute left-1/2 top-[41px] flex w-[219px] -translate-x-1/2 flex-col items-center gap-3 text-center md:left-6 md:top-[109px] md:w-auto md:translate-x-0 md:items-start md:text-left",
     locationName: "text-[28px] font-bold leading-[1.2] text-white",
-    date: "text-[18px] font-medium leading-[1.2] text-[#D4D3D9]",
+    date: "text-[18px] font-medium leading-[1.2] text-white opacity-80",
     temperature:
-      "absolute bottom-[41px] left-1/2 flex h-[120px] w-[294px] -translate-x-1/2 items-center gap-5 md:bottom-auto md:left-auto md:right-6 md:top-[83px] md:translate-x-0",
+      "absolute bottom-[41px] left-1/2 flex h-[120px] w-[294px] -translate-x-1/2 items-center justify-end gap-5 md:bottom-auto md:left-auto md:right-6 md:top-[83px] md:translate-x-0",
     temperatureIcon: "size-[120px] shrink-0 object-contain",
     temperatureValue:
-      "font-['DM_Sans'] text-[96px] font-semibold italic leading-none tracking-[-0.02em] text-white",
+      "w-[154px] text-center font-['DM_Sans'] text-[96px] font-semibold italic leading-none tracking-[-0.02em] text-white",
     detailGrid:
-      "grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 min-[1200px]:gap-6",
+      "grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 min-[1440px]:gap-6",
     detailCard:
       "flex h-[118px] flex-col justify-between rounded-[12px] border border-[#3C3B5E] bg-[#262540] p-5",
     detailLabel: "text-[18px] font-medium leading-[1.2] text-[#D4D3D9]",
@@ -280,7 +291,7 @@ export const figmaTailwing = Object.freeze({
     time: "ml-2 flex-1 text-[20px] font-medium leading-[1.2] text-white",
     temperature: "text-[16px] font-medium leading-[1.2] text-white",
     scrollbar:
-      "absolute right-0 top-[263px] h-[262px] w-1 rounded-[12px] bg-[#302F4A]",
+      "absolute right-0 top-[263px] h-[262px] w-1 rounded-[12px] border border-[#3C3B5E] bg-[#302F4A]",
   },
 
   // YUKLEME, BOS SONUC VE API HATASI
@@ -288,25 +299,25 @@ export const figmaTailwing = Object.freeze({
     skeleton: "animate-pulse rounded-[12px] bg-[#302F4A]",
     loadingCard:
       "flex h-[286px] items-center justify-center rounded-[20px] bg-[#262540] text-[18px] font-medium leading-[1.2] text-white",
-    loadingContent: "flex flex-col items-center gap-3",
+    loadingContent: "flex flex-col items-center gap-[14px]",
     loadingIcon: "size-4 animate-spin",
     noResults:
       "mt-12 text-center text-[28px] font-bold leading-[1.2] text-white",
     errorLayout:
-      "mx-auto flex max-w-[620px] flex-col items-center pt-[108px] text-center",
-    errorIcon: "size-12",
+      "mx-auto flex w-full max-w-[1216px] flex-col items-center gap-6 pt-10 text-center",
+    errorIcon: "h-[50px] w-[42px] object-contain",
     errorTitle:
-      "mt-8 font-['Bricolage_Grotesque'] text-[52px] font-bold leading-[1.2] text-white",
+      "font-['Bricolage_Grotesque'] text-[52px] font-bold leading-[1.2] text-white",
     errorMessage:
-      "mt-5 max-w-[560px] text-[20px] font-medium leading-[1.2] text-[#D4D3D9]",
+      "max-w-[554px] text-[20px] font-medium leading-[1.2] text-[#D4D3D9]",
     retryButton:
-      "mt-6 inline-flex h-[43px] items-center justify-center gap-2 rounded-[8px] bg-[#262540] px-4 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF]",
+      "inline-flex h-[43px] items-center justify-center gap-[10px] rounded-[8px] bg-[#262540] px-4 py-3 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#FFFFFF]",
   },
 
   // ORIJINAL FIGMA EXPORT'LARINDA IKON BOYUTLARI SABITTIR.
   asset: {
     uiIcon: "block size-4 shrink-0 object-contain",
-    searchIcon: "block size-[21px] shrink-0 object-contain",
+    searchIcon: "block size-5 shrink-0 object-contain",
     weatherSmall: "block size-10 shrink-0 object-contain",
     weatherMedium: "block size-[60px] shrink-0 object-contain",
     weatherLarge: "block size-[120px] shrink-0 object-contain",
