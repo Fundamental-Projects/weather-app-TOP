@@ -29,8 +29,6 @@ async function fetchGeoData(searchTerm) {
 
     const result = await data.results[0];
 
-    console.log(result);
-
     return result;
   } catch (error) {
     console.error("Error fetching geo data:", error);
@@ -66,7 +64,6 @@ async function fetchWeatherData(latitude, longitude) {
     }
 
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching weather data:", error);
@@ -75,10 +72,17 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 async function fetchResult(searchTerm) {
-  const { latitude, longitude } = await fetchGeoData(searchTerm);
+  const {
+    latitude,
+    longitude,
+    name: locationCity,
+    country,
+  } = await fetchGeoData(searchTerm);
   const data = await fetchWeatherData(latitude, longitude);
 
-  return data;
+  console.log(data, locationCity, country);
+
+  return { data, locationCity, country };
 }
 fetchResult("adana");
 
