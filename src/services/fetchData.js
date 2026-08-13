@@ -84,17 +84,19 @@ async function fetchWeatherByLocation(searchTerm) {
   } = await fetchGeoData(searchTerm);
   const location = { city, country, timezone };
   const weather = await fetchWeatherData(latitude, longitude);
+  const result = { location, weather };
 
   console.log(location);
   console.log(weather);
 
-  return { location, weather };
+  return processWeatherData(result);
 }
 
 function processWeatherData({ location, weather }) {
   const {
     current: {
       time,
+      apparent_temperature: apparentTemperature,
       temperature_2m: temperature,
       relative_humidity_2m: humidity,
       precipitation,
@@ -104,15 +106,41 @@ function processWeatherData({ location, weather }) {
     daily: {
       time: dailyTimes,
       weather_code: dailyWeatherCodes,
-      temperature_2m_max: dailyMaxTemperaturies,
-      temperature_2m_min: dailyMinTemperaturies,
+      temperature_2m_max: dailyMaxTemperatures,
+      temperature_2m_min: dailyMinTemperatures,
     },
     hourly: {
       time: hourlyTimes,
       weather_code: hourlyWeatherCodes,
-      temperature_2m: hourlyTemperaturies,
+      temperature_2m: hourlyTemperatures,
     },
   } = weather;
+
+  const current = {
+    time,
+    apparentTemperature,
+    temperature,
+    humidity,
+    precipitation,
+    weatherCode,
+    windSpeed,
+  };
+
+  const daily = dailyTimes.map((date, index) => ({
+    date,
+    weatherCode: dailyWeatherCodes[index],
+    temperatureMax: dailyMaxTemperatures[index],
+    temperatureMin: dailyMinTemperatures[index],
+  }));
+
+  const hourly = hourlyTimes.map((date, index) => ({
+    date,
+    weatherCode: hourlyWeatherCodes[index],
+    temperature: hourlyTemperatures[index],
+  }));
+  // console.log(daily);
+  // console.log(hourly);
+  return { location, current, daily, hourly };
 }
 fetchWeatherByLocation("adana");
 
