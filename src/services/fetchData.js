@@ -72,17 +72,12 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 async function fetchResult(searchTerm) {
-  const {
-    latitude,
-    longitude,
-    name: locationCity,
-    country,
-  } = await fetchGeoData(searchTerm);
+  const { latitude, longitude, name: city, country } = await fetchGeoData(searchTerm);
   const data = await fetchWeatherData(latitude, longitude);
 
-  console.log(data, locationCity, country);
+  console.log(data, city, country);
 
-  return { data, locationCity, country };
+  return { data, city, country };
 }
 fetchResult("adana");
 
