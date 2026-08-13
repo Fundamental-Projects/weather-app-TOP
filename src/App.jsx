@@ -1,27 +1,18 @@
 import { formStyles } from "./styles/defaults/formStyles";
 import { fetchWeatherByLocation } from "./services/fetchData";
+import figmaTailwing from "./styles/figmaStlyes/figmaTailwing";
+import Header from "./ui/Header";
 
 function App() {
   return (
-    <div>
-      <Form />
+    <div className={figmaTailwing.layout.page}>
+      <div className={figmaTailwing.layout.canvas}>
+        <Header />
+        <main>
+          <h1 className={figmaTailwing.layout.title}>How's the sky looking today?</h1>
+        </main>
+      </div>
     </div>
-  );
-}
-
-function Form() {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  return (
-    <form className={formStyles.container} onSubmit={handleSubmit}>
-      <label className={formStyles.label} htmlFor="input">
-        Sehrinizi giriniz
-      </label>
-      <input className={formStyles.input} type="text" />
-      <button className={formStyles.button}>Submit</button>
-    </form>
   );
 }
 

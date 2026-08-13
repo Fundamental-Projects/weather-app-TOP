@@ -126,20 +126,20 @@ function processWeatherData({ location, weather }) {
     windSpeed,
   };
 
-  const daily = dailyTimes.map((date, index) => ({
-    date,
+  const daily = dailyTimes.map((time, index) => ({
+    time,
     weatherCode: dailyWeatherCodes[index],
     temperatureMax: dailyMaxTemperatures[index],
     temperatureMin: dailyMinTemperatures[index],
   }));
 
-  const hourly = hourlyTimes.map((date, index) => ({
-    date,
+  const hourly = hourlyTimes.map((time, index) => ({
+    time,
     weatherCode: hourlyWeatherCodes[index],
     temperature: hourlyTemperatures[index],
   }));
-  // console.log(daily);
-  // console.log(hourly);
+  console.log(daily);
+  console.log(hourly);
   return { location, current, daily, hourly };
 }
 fetchWeatherByLocation("adana");
