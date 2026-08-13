@@ -32,8 +32,6 @@ async function fetchGeoData(searchTerm) {
       throw new Error("Location not found");
     }
 
-    console.log(result);
-
     return result;
   } catch (error) {
     console.error("Error fetching geo data:", error);
@@ -76,7 +74,7 @@ async function fetchWeatherData(latitude, longitude) {
   }
 }
 
-async function fetchResult(searchTerm) {
+async function fetchWeatherByLocation(searchTerm) {
   const {
     latitude,
     longitude,
@@ -92,6 +90,30 @@ async function fetchResult(searchTerm) {
 
   return { location, weather };
 }
-fetchResult("adana");
 
-export { fetchResult };
+function processWeatherData({ location, weather }) {
+  const {
+    current: {
+      time,
+      temperature_2m: temperature,
+      relative_humidity_2m: humidity,
+      precipitation,
+      weather_code: weatherCode,
+      wind_speed_10m: windSpeed,
+    },
+    daily: {
+      time: dailyTimes,
+      weather_code: dailyWeatherCodes,
+      temperature_2m_max: dailyMaxTemperaturies,
+      temperature_2m_min: dailyMinTemperaturies,
+    },
+    hourly: {
+      time: hourlyTimes,
+      weather_code: hourlyWeatherCodes,
+      temperature_2m: hourlyTemperaturies,
+    },
+  } = weather;
+}
+fetchWeatherByLocation("adana");
+
+export { fetchWeatherByLocation };
