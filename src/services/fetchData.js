@@ -5,7 +5,7 @@ async function fetchGeoData(searchTerm) {
   try {
     if (!searchTerm.trim()) {
       console.log("No search term provided. Skipping fetch.");
-      return null;
+      throw new Error("No search term provided Skipping fetch");
     }
 
     const url = new URL(BASE_URL);
@@ -27,7 +27,10 @@ async function fetchGeoData(searchTerm) {
 
     const data = await response.json();
 
-    const result = data.results[0] ? data.results[0] : "Result not found";
+    const result = data.results?.[0];
+    if (!result) {
+      throw new Error("Location not found");
+    }
 
     console.log(result);
 
@@ -80,12 +83,12 @@ async function fetchResult(searchTerm) {
     name: city,
     country,
     timezone,
-    ...otherInfos
   } = await fetchGeoData(searchTerm);
   const location = { city, country, timezone };
   const weather = await fetchWeatherData(latitude, longitude);
 
   console.log(location);
+  console.log(weather);
 
   return { location, weather };
 }
