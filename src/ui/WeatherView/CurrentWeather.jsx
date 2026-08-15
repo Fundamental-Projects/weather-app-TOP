@@ -4,9 +4,12 @@ import figmaTailwing, {
 } from "../../styles/figmaStlyes/figmaTailwing";
 import { formatFullDate } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
+import Spinner from "../Spinner";
 
-function CurrentWeather({ weatherTypes, currentData, units }) {
+function CurrentWeather({ weatherTypes, currentData, units, query }) {
   const stylesWeather = figmaTailwing.weather; // Kısaltma için
+
+  if (query.isPending) return <Spinner />;
   const convertedTemperature = convertTemperature(
     currentData.temperature,
     units.temperature,

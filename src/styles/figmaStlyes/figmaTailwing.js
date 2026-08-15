@@ -224,7 +224,7 @@ export const figmaTailwing = Object.freeze({
       "h-[14px] w-[9px] shrink-0 md:h-[18px] md:w-3",
     chevron: "h-[18px] w-3 shrink-0",
     dayButton:
-      "inline-flex h-[37px] w-[120px] items-center justify-between gap-3 rounded-[8px] bg-[#3C3B5E] px-4 py-2 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_#262540,0_0_0_3px_#FFFFFF]",
+      "inline-flex h-[37px] w-[140px] shrink-0 items-center justify-between gap-3 rounded-[8px] bg-[#3C3B5E] px-4 py-2 text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_#262540,0_0_0_3px_#FFFFFF]",
     menu:
       "z-40 flex h-[412px] w-[214px] flex-col items-start gap-1 rounded-[12px] border border-[#3C3B5E] bg-[#262540] px-2 py-[6px] shadow-[0_8px_16px_0_rgba(2,1,44,0.32)]",
     switchButton:

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing";
 
-function SearchForm() {
+function SearchForm({ searchTerm, onSearch }) {
+  const [inputValue, setInputValue] = useState("");
   function handleSubmit(event) {
     event.preventDefault();
   }
@@ -12,6 +14,8 @@ function SearchForm() {
           type="text"
           placeholder="Search for a place..."
           aria-label="Search for a place"
+          value={searchTerm}
+          onChange={(e) => onSearch(e.target.value)}
           className={figmaTailwing.search.input}
         />
       </label>

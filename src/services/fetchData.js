@@ -138,10 +138,10 @@ function processWeatherData({ location, weather }) {
     weatherCode: hourlyWeatherCodes[index],
     temperature: hourlyTemperatures[index],
   }));
-  console.log(daily);
-  console.log(hourly);
+  // console.log(daily);
+  // console.log(hourly);
   return { location, current, daily, hourly };
 }
-fetchWeatherByLocation("adana");
+// fetchWeatherByLocation("adana");
 
 export { fetchWeatherByLocation };
