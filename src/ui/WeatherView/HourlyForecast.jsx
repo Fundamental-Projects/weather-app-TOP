@@ -1,10 +1,11 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
 
 function HourlyForecast() {
+  const figmaHourly = figmaTailwing.hourly; // Kısaltma için
   return (
-    <section className={figmaTailwing.hourly.panel}>
-      <div className={figmaTailwing.hourly.header}>
-        <h2 className={figmaTailwing.hourly.title}>Hourly forecast</h2>
+    <section className={figmaHourly.panel}>
+      <div className={figmaHourly.header}>
+        <h2 className={figmaHourly.title}>Hourly forecast</h2>
         <button className={figmaTailwing.controls.dayButton} type="button">
           <span>Tuesday</span>
           <img
@@ -15,73 +16,53 @@ function HourlyForecast() {
         </button>
         {/* Dropdown menu eklenecek */}
       </div>
-      <ul className={figmaTailwing.hourly.rows}>
-        <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.overcast}
-            alt="Overcast"
-          />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+      <ul className={figmaHourly.rows}>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
+        <li className={figmaHourly.row}>
           <img
-            className={figmaTailwing.hourly.icon}
+            className={figmaHourly.icon}
             src={figmaAssets.partlyCloudy}
             alt="Partly cloudy"
           />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.sunny}
-            alt="Sunny"
-          />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.sunny} alt="Sunny" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.overcast}
-            alt="Overcast"
-          />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.drizzle}
-            alt="Drizzle"
-          />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.drizzle} alt="Drizzle" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img className={figmaTailwing.hourly.icon} src={figmaAssets.fog} alt="Fog" />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.fog} alt="Fog" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img className={figmaTailwing.hourly.icon} src={figmaAssets.rain} alt="Rain" />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.rain} alt="Rain" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
-        <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.overcast}
-            alt="Overcast"
-          />
-          <span className={figmaTailwing.hourly.time}>X PM</span>
-          <span className={figmaTailwing.hourly.temperature}>y°</span>
+        <li className={figmaHourly.row}>
+          <img className={figmaHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
+          <span className={figmaHourly.time}>X PM</span>
+          <span className={figmaHourly.temperature}>y°</span>
         </li>
       </ul>
-      <div className={figmaTailwing.hourly.scrollbar} aria-hidden="true" />
+      <div className={figmaHourly.scrollbar} aria-hidden="true" />
     </section>
   );
 }

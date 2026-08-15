@@ -1,87 +1,80 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
 
 function DailyForecast() {
+  const figmaDaily = figmaTailwing.daily; // Kısaltma için
   return (
-    <section className={figmaTailwing.daily.section}>
-      <h2 className={figmaTailwing.daily.title}>Daily forecast</h2>
+    <section className={figmaDaily.section}>
+      <h2 className={figmaDaily.title}>Daily forecast</h2>
 
-      <div className={figmaTailwing.daily.grid}>
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Tue</span>
-          <img className={figmaTailwing.daily.icon} src={figmaAssets.rain} alt="Rain" />
-          <div className={figmaTailwing.daily.range}>
+      <div className={figmaDaily.grid}>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Tue</span>
+          <img className={figmaDaily.icon} src={figmaAssets.rain} alt="Rain" />
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Wed</span>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Wed</span>
           <img
-            className={figmaTailwing.daily.icon}
+            className={figmaDaily.icon}
             src={figmaAssets.partlyCloudy}
             alt="Partly cloudy"
           />
-          <div className={figmaTailwing.daily.range}>
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Thu</span>
-          <img className={figmaTailwing.daily.icon} src={figmaAssets.sunny} alt="Sunny" />
-          <div className={figmaTailwing.daily.range}>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Thu</span>
+          <img className={figmaDaily.icon} src={figmaAssets.sunny} alt="Sunny" />
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Fri</span>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Fri</span>
           <img
-            className={figmaTailwing.daily.icon}
+            className={figmaDaily.icon}
             src={figmaAssets.partlyCloudy}
             alt="Partly cloudy"
           />
-          <div className={figmaTailwing.daily.range}>
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Sat</span>
-          <img
-            className={figmaTailwing.daily.icon}
-            src={figmaAssets.storm}
-            alt="Thunderstorms"
-          />
-          <div className={figmaTailwing.daily.range}>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Sat</span>
+          <img className={figmaDaily.icon} src={figmaAssets.storm} alt="Thunderstorms" />
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Sun</span>
-          <img
-            className={figmaTailwing.daily.icon}
-            src={figmaAssets.overcast}
-            alt="Overcast"
-          />
-          <div className={figmaTailwing.daily.range}>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Sun</span>
+          <img className={figmaDaily.icon} src={figmaAssets.overcast} alt="Overcast" />
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
 
-        <article className={figmaTailwing.daily.card}>
-          <span className={figmaTailwing.daily.day}>Mon</span>
-          <img className={figmaTailwing.daily.icon} src={figmaAssets.fog} alt="Fog" />
-          <div className={figmaTailwing.daily.range}>
+        <article className={figmaDaily.card}>
+          <span className={figmaDaily.day}>Mon</span>
+          <img className={figmaDaily.icon} src={figmaAssets.fog} alt="Fog" />
+          <div className={figmaDaily.range}>
             <span>X°</span>
-            <span className={figmaTailwing.daily.low}>Y°</span>
+            <span className={figmaDaily.low}>Y°</span>
           </div>
         </article>
       </div>
