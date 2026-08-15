@@ -3,7 +3,7 @@ import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwi
 function DailyForecast() {
   return (
     <section className={figmaTailwing.daily.section}>
-      <h3 className={figmaTailwing.daily.title}>Daily forecast</h3>
+      <h2 className={figmaTailwing.daily.title}>Daily forecast</h2>
 
       <div className={figmaTailwing.daily.grid}>
         <article className={figmaTailwing.daily.card}>

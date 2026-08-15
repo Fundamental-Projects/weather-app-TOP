@@ -4,7 +4,7 @@ function HourlyForecast() {
   return (
     <section className={figmaTailwing.hourly.panel}>
       <div className={figmaTailwing.hourly.header}>
-        <h3 className={figmaTailwing.hourly.title}>Hourly forecast</h3>
+        <h2 className={figmaTailwing.hourly.title}>Hourly forecast</h2>
         <button className={figmaTailwing.controls.dayButton} type="button">
           <span>Tuesday</span>
           <img
@@ -62,20 +62,12 @@ function HourlyForecast() {
           <span className={figmaTailwing.hourly.temperature}>y°</span>
         </li>
         <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.fog}
-            alt="Fog"
-          />
+          <img className={figmaTailwing.hourly.icon} src={figmaAssets.fog} alt="Fog" />
           <span className={figmaTailwing.hourly.time}>X PM</span>
           <span className={figmaTailwing.hourly.temperature}>y°</span>
         </li>
         <li className={figmaTailwing.hourly.row}>
-          <img
-            className={figmaTailwing.hourly.icon}
-            src={figmaAssets.rain}
-            alt="Rain"
-          />
+          <img className={figmaTailwing.hourly.icon} src={figmaAssets.rain} alt="Rain" />
           <span className={figmaTailwing.hourly.time}>X PM</span>
           <span className={figmaTailwing.hourly.temperature}>y°</span>
         </li>
