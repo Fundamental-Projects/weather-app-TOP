@@ -5,4 +5,20 @@ function formatHour(time) {
   }).format(new Date(time));
 }
 
-export { formatHour };
+function formatWeekday(date) {
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    timeZone: "UTC",
+  }).format(new Date(date));
+}
+
+function formatFullDate(dateTime) {
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(dateTime));
+}
+
+export { formatHour, formatWeekday, formatFullDate };

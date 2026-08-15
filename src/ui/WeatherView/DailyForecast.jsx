@@ -1,4 +1,5 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
+import { formatWeekday } from "../../helper/formatTime";
 
 function DailyForecast() {
   const stylesDaily = figmaTailwing.daily; // Kısaltma için
@@ -47,6 +48,42 @@ function DailyForecast() {
       temperatureMax: 22,
       temperatureMin: 18,
     },
+    {
+      time: "2026-08-16",
+      weatherCode: 80,
+      temperatureMax: 22,
+      temperatureMin: 18,
+    },
+    {
+      time: "2026-08-17",
+      weatherCode: 95,
+      temperatureMax: 22,
+      temperatureMin: 12,
+    },
+    {
+      time: "2026-08-17",
+      weatherCode: 71,
+      temperatureMax: 2,
+      temperatureMin: -11,
+    },
+    {
+      time: "2026-08-19",
+      weatherCode: 51,
+      temperatureMax: 21,
+      temperatureMin: 14,
+    },
+    {
+      time: "2026-08-20",
+      weatherCode: 45,
+      temperatureMax: 17,
+      temperatureMin: 11,
+    },
+    {
+      time: "2026-08-21",
+      weatherCode: 0,
+      temperatureMax: 32,
+      temperatureMin: 28,
+    },
   ];
 
   return (
@@ -57,7 +94,7 @@ function DailyForecast() {
         {dailyData.map((daily, index) => {
           return (
             <li key={index} className={stylesDaily.card}>
-              <span className={stylesDaily.day}>Tue</span>
+              <span className={stylesDaily.day}>{formatWeekday(daily.time)}</span>
               <img
                 className={stylesDaily.icon}
                 src={figmaAssets[weatherTypes[daily.weatherCode]]}
@@ -75,75 +112,4 @@ function DailyForecast() {
   );
 }
 
-function staticDate() {
-  return (
-    <>
-      {" "}
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Tue</span>
-        <img className={stylesDaily.icon} src={figmaAssets.rain} alt="Rain" />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Wed</span>
-        <img
-          className={stylesDaily.icon}
-          src={figmaAssets.partlyCloudy}
-          alt="Partly cloudy"
-        />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Thu</span>
-        <img className={stylesDaily.icon} src={figmaAssets.sunny} alt="Sunny" />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Fri</span>
-        <img
-          className={stylesDaily.icon}
-          src={figmaAssets.partlyCloudy}
-          alt="Partly cloudy"
-        />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Sat</span>
-        <img className={stylesDaily.icon} src={figmaAssets.storm} alt="Thunderstorms" />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Sun</span>
-        <img className={stylesDaily.icon} src={figmaAssets.overcast} alt="Overcast" />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-      <li className={stylesDaily.card}>
-        <span className={stylesDaily.day}>Mon</span>
-        <img className={stylesDaily.icon} src={figmaAssets.fog} alt="Fog" />
-        <div className={stylesDaily.range}>
-          <span>X°</span>
-          <span className={stylesDaily.low}>Y°</span>
-        </div>
-      </li>
-    </>
-  );
-}
 export default DailyForecast;

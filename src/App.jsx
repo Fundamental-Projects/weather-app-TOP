@@ -6,8 +6,10 @@ import DailyForecast from "./ui/WeatherView/DailyForecast";
 import HourlyForecast from "./ui/WeatherView/HourlyForecast";
 import WeatherDetails from "./ui/WeatherView/WeatherDetails";
 import { fetchWeatherByLocation } from "./services/fetchData";
+import { useState } from "react";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className={figmaTailwing.layout.page}>
       <div className={figmaTailwing.layout.canvas}>
