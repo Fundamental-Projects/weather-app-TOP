@@ -1,17 +1,8 @@
 import figmaTailwing from "../../styles/figmaStlyes/figmaTailwing";
 
-function WeatherDetails() {
+function WeatherDetails({ currentData }) {
   const stylesWeather = figmaTailwing.weather; // Kısaltma için
 
-  const currentData = {
-    apparentTemperature: 36,
-    humidity: 51,
-    precipitation: 0,
-    temperature: 33.6,
-    time: "2026-08-15T17:45",
-    weatherCode: 2,
-    windSpeed: 17.6,
-  };
   return (
     <dl className={stylesWeather.detailGrid}>
       <div className={stylesWeather.detailCard}>
