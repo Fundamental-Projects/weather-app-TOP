@@ -11,6 +11,7 @@ function SearchForm() {
         <input
           type="text"
           placeholder="Search for a place..."
+          aria-label="Search for a place"
           className={figmaTailwing.search.input}
         />
       </label>

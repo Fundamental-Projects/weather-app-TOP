@@ -86,8 +86,8 @@ async function fetchWeatherByLocation(searchTerm) {
   const weather = await fetchWeatherData(latitude, longitude);
   const result = { location, weather };
 
-  console.log(location);
-  console.log(weather);
+  // console.log(location);
+  // console.log(weather);
 
   return processWeatherData(result);
 }
@@ -138,7 +138,7 @@ function processWeatherData({ location, weather }) {
     weatherCode: hourlyWeatherCodes[index],
     temperature: hourlyTemperatures[index],
   }));
-  console.log(daily);
+  // console.log(daily);
   console.log(hourly);
   return { location, current, daily, hourly };
 }

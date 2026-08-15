@@ -5,6 +5,7 @@ import CurrentWeather from "./ui/WeatherView/CurrentWeather";
 import DailyForecast from "./ui/WeatherView/DailyForecast";
 import HourlyForecast from "./ui/WeatherView/HourlyForecast";
 import WeatherDetails from "./ui/WeatherView/WeatherDetails";
+import { fetchWeatherByLocation } from "./services/fetchData";
 
 function App() {
   return (

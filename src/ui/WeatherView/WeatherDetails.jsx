@@ -1,29 +1,29 @@
 import figmaTailwing from "../../styles/figmaStlyes/figmaTailwing";
 
 function WeatherDetails() {
-  const figmaWeather = figmaTailwing.weather; // Kısaltma için
+  const stylesWeather = figmaTailwing.weather; // Kısaltma için
   return (
-    <section className={figmaWeather.detailGrid}>
-      <article className={figmaWeather.detailCard}>
-        <span className={figmaWeather.detailLabel}>Feels Like</span>
-        <span className={figmaWeather.detailValue}>X°</span>
-      </article>
+    <dl className={stylesWeather.detailGrid}>
+      <div className={stylesWeather.detailCard}>
+        <dt className={stylesWeather.detailLabel}>Feels Like</dt>
+        <dd className={stylesWeather.detailValue}>X°</dd>
+      </div>
 
-      <article className={figmaWeather.detailCard}>
-        <span className={figmaWeather.detailLabel}>Humidity</span>
-        <span className={figmaWeather.detailValue}>X%</span>
-      </article>
+      <div className={stylesWeather.detailCard}>
+        <dt className={stylesWeather.detailLabel}>Humidity</dt>
+        <dd className={stylesWeather.detailValue}>X%</dd>
+      </div>
 
-      <article className={figmaWeather.detailCard}>
-        <span className={figmaWeather.detailLabel}>Wind</span>
-        <span className={figmaWeather.detailValue}>X km/h</span>
-      </article>
+      <div className={stylesWeather.detailCard}>
+        <dt className={stylesWeather.detailLabel}>Wind</dt>
+        <dd className={stylesWeather.detailValue}>X km/h</dd>
+      </div>
 
-      <article className={figmaTailwing.weather.detailCard}>
-        <span className={figmaTailwing.weather.detailLabel}>Precipitation</span>
-        <span className={figmaTailwing.weather.detailValue}>X mm</span>
-      </article>
-    </section>
+      <div className={stylesWeather.detailCard}>
+        <dt className={stylesWeather.detailLabel}>Precipitation</dt>
+        <dd className={stylesWeather.detailValue}>X mm</dd>
+      </div>
+    </dl>
   );
 }
 
