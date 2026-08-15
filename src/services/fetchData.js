@@ -140,8 +140,6 @@ function processWeatherData({ location, weather }) {
   }));
   console.log(daily);
   console.log(hourly);
-  console.log(current);
-  console.log(location);
   return { location, current, daily, hourly };
 }
 fetchWeatherByLocation("adana");

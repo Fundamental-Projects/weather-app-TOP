@@ -6,13 +6,13 @@ function convertTemperature(temperature, targetUnit) {
 }
 
 function convertSpeed(speed, targetUnit) {
-  const convertedSpeed = targetUnit === "km/h" ? speed * 0.621371 : speed;
+  const convertedSpeed = targetUnit === "mph" ? speed * 0.621371 : speed;
 
   return convertedSpeed;
 }
 
 function convertPrecipation(prep, targetUnit) {
-  const convertedPrep = targetUnit === "mm" ? prep / 25.4 : prep;
+  const convertedPrep = targetUnit === "inch" ? prep / 25.4 : prep;
 
   return convertedPrep;
 }

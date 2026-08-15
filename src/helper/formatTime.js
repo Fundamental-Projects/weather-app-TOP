@@ -5,9 +5,9 @@ function formatHour(time) {
   }).format(new Date(time));
 }
 
-function formatWeekday(date) {
+function formatWeekday(date, format = "short") {
   return new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
+    weekday: format,
     timeZone: "UTC",
   }).format(new Date(date));
 }

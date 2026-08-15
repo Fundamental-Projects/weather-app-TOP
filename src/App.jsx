@@ -180,6 +180,7 @@ function App() {
                 units={units}
                 weatherTypes={weatherTypes}
                 hourlyData={hourlyData}
+                dailyData={dailyData}
               />
             </div>
           </div>

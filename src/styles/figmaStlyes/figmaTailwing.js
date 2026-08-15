@@ -282,8 +282,12 @@ export const figmaTailwing = Object.freeze({
   hourly: {
     panel:
       "relative h-[685px] overflow-hidden rounded-[20px] bg-[#262540] px-4 py-5 md:h-[693px] md:p-6",
-    header: "flex h-[37px] items-center justify-between",
+    header: "relative flex h-[37px] items-center justify-between",
     title: "text-[20px] font-semibold leading-[1.2] text-white",
+    dayMenu:
+      "absolute right-0 top-[45px] z-30 flex w-[214px] flex-col gap-1 rounded-[12px] border border-[#3C3B5E] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)]",
+    dayMenuOption:
+      "flex h-[39px] w-full items-center rounded-[8px] px-2 py-[10px] text-left text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none",
     rows: "mt-4 flex flex-col gap-4",
     row:
       "flex h-[60px] items-center rounded-[8px] border border-[#3C3B5E] bg-[#302F4A] py-[10px] pl-3 pr-4",

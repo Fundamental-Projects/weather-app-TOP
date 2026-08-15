@@ -21,7 +21,7 @@ function DailyForecast({ weatherTypes, dailyData, units }) {
               />
               <div className={stylesDaily.range}>
                 <span>
-                  {convertTemperature(daily.temperatureMin, units.temperature).toFixed(0)}
+                  {convertTemperature(daily.temperatureMax, units.temperature).toFixed(0)}
                   °
                 </span>
                 <span className={stylesDaily.low}>

@@ -1,15 +1,31 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
-import { formatHour } from "../../helper/formatTime";
+import { formatHour, formatWeekday } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
+import { useState } from "react";
 
-function HourlyForecast({ weatherTypes, hourlyData, units }) {
-  const stylesHourly = figmaTailwing.hourly; // Kısaltma için
+function HourlyForecast({ weatherTypes, hourlyData, units, dailyData }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const activeDate = selectedDate ?? dailyData[0]?.time;
+  const selectedDayHours = hourlyData.filter((hour) => hour.time.startsWith(activeDate));
+  const visibleHours = selectedDayHours.slice(15, 23);
+
+  const stylesHourly = figmaTailwing.hourly;
+
+  function handleClick() {
+    setIsOpen((isOpen) => !isOpen);
+  }
 
   return (
     <section className={stylesHourly.panel}>
       <div className={stylesHourly.header}>
         <h2 className={stylesHourly.title}>Hourly forecast</h2>
-        <button className={figmaTailwing.controls.dayButton} type="button">
+        <button
+          onClick={handleClick}
+          className={figmaTailwing.controls.dayButton}
+          type="button"
+        >
           <span>Tuesday</span>
           <img
             className={figmaTailwing.controls.chevron}
@@ -17,10 +33,20 @@ function HourlyForecast({ weatherTypes, hourlyData, units }) {
             alt=""
           />
         </button>
-        {/* Dropdown menu eklenecek */}
+        {isOpen && (
+          <ul className={stylesHourly.dayMenu}>
+            {dailyData.map((day) => (
+              <li key={day.time}>
+                <button className={stylesHourly.dayMenuOption} type="button">
+                  {formatWeekday(day.time, "long")}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <ul className={stylesHourly.rows}>
-        {hourlyData.map((hour, index) => {
+        {visibleHours.map((hour, index) => {
           return (
             <li key={index} className={stylesHourly.row}>
               <img
@@ -43,51 +69,4 @@ function HourlyForecast({ weatherTypes, hourlyData, units }) {
   );
 }
 
-// function staticData() {
-//        <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img
-//             className={stylesHourly.icon}
-//             src={figmaAssets.partlyCloudy}
-//             alt="Partly cloudy"
-//           />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.sunny} alt="Sunny" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.drizzle} alt="Drizzle" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.fog} alt="Fog" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.rain} alt="Rain" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-//         <li className={stylesHourly.row}>
-//           <img className={stylesHourly.icon} src={figmaAssets.overcast} alt="Overcast" />
-//           <span className={stylesHourly.time}>X PM</span>
-//           <span className={stylesHourly.temperature}>y°</span>
-//         </li>
-
-// }
 export default HourlyForecast;
