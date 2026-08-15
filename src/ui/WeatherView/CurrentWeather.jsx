@@ -3,9 +3,14 @@ import figmaTailwing, {
   figmaInlineStyles,
 } from "../../styles/figmaStlyes/figmaTailwing";
 import { formatFullDate } from "../../helper/formatTime";
+import { convertTemperature } from "../../features/units/conversationUnits";
 
-function CurrentWeather({ weatherTypes, currentData }) {
+function CurrentWeather({ weatherTypes, currentData, units }) {
   const stylesWeather = figmaTailwing.weather; // Kısaltma için
+  const convertedTemperature = convertTemperature(
+    currentData.temperature,
+    units.temperature,
+  );
 
   const location = {
     city: "Adana",
@@ -29,7 +34,7 @@ function CurrentWeather({ weatherTypes, currentData }) {
           alt={weatherTypes[currentData.weatherCode]}
         />
         <p className={stylesWeather.temperatureValue}>
-          {currentData.temperature.toFixed(0)}°
+          {convertedTemperature.toFixed(0)}°
         </p>
       </div>
     </section>

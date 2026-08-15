@@ -1,7 +1,8 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
 import { formatWeekday } from "../../helper/formatTime";
+import { convertTemperature } from "../../features/units/conversationUnits";
 
-function DailyForecast({ weatherTypes, dailyData }) {
+function DailyForecast({ weatherTypes, dailyData, units }) {
   const stylesDaily = figmaTailwing.daily; // Kısaltma için
 
   return (
@@ -19,8 +20,14 @@ function DailyForecast({ weatherTypes, dailyData }) {
                 alt={weatherTypes[daily.weatherCode]}
               />
               <div className={stylesDaily.range}>
-                <span>{daily.temperatureMax}°</span>
-                <span className={stylesDaily.low}>{daily.temperatureMin}°</span>
+                <span>
+                  {convertTemperature(daily.temperatureMin, units.temperature).toFixed(0)}
+                  °
+                </span>
+                <span className={stylesDaily.low}>
+                  {convertTemperature(daily.temperatureMin, units.temperature).toFixed(0)}
+                  °
+                </span>
               </div>
             </li>
           );

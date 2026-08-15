@@ -1,7 +1,8 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
 import { formatHour } from "../../helper/formatTime";
+import { convertTemperature } from "../../features/units/conversationUnits";
 
-function HourlyForecast({ weatherTypes, hourlyData }) {
+function HourlyForecast({ weatherTypes, hourlyData, units }) {
   const stylesHourly = figmaTailwing.hourly; // Kısaltma için
 
   return (
@@ -30,7 +31,9 @@ function HourlyForecast({ weatherTypes, hourlyData }) {
               <time dateTime={hour.time} className={stylesHourly.time}>
                 {formatHour(hour.time)}
               </time>
-              <span className={stylesHourly.temperature}>{hour.temperature}°</span>
+              <span className={stylesHourly.temperature}>
+                {convertTemperature(hour.temperature, units.temperature).toFixed(0)}°
+              </span>
             </li>
           );
         })}

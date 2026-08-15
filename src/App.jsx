@@ -6,15 +6,14 @@ import DailyForecast from "./ui/WeatherView/DailyForecast";
 import HourlyForecast from "./ui/WeatherView/HourlyForecast";
 import WeatherDetails from "./ui/WeatherView/WeatherDetails";
 import { fetchWeatherByLocation } from "./services/fetchData";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import UnitToggle from "./ui/UnitToggle";
+import { initialUnits, unitsReducer } from "./features/units/unitsReducer";
 
 function reducer(state, action) {}
 
 function App() {
-  const [temperatureUnit, setTemperatureUnit] = useState("celsius");
-  const [windUnit, setWindUnit] = useState("km/h");
-  const [precipitationUnit, setPrecipitationUnit] = useState("mm");
+  const [units, dispatch] = useReducer(unitsReducer, initialUnits);
   const [searchTerm, setSearchTerm] = useState("");
 
   const weatherTypes = {
@@ -157,26 +156,31 @@ function App() {
     <div className={figmaTailwing.layout.page}>
       <div className={figmaTailwing.layout.canvas}>
         <Header>
-          <UnitToggle
-            tempUnitChange={temperatureUnit}
-            setTempUnitChange={setTemperatureUnit}
-            windUnit={windUnit}
-            setWindUnite={setWindUnit}
-            precipitationUnit={precipitationUnit}
-            setPrecipitationUnit={setPrecipitationUnit}
-          />
+          <UnitToggle units={units} dispatch={dispatch} />
         </Header>
         <main className={figmaTailwing.layout.main}>
           <h1 className={figmaTailwing.layout.title}>How's the sky looking today?</h1>
           <SearchForm />
           <div className={figmaTailwing.layout.content}>
             <div className={figmaTailwing.layout.leftColumn}>
-              <CurrentWeather currentData={currentData} weatherTypes={weatherTypes} />
-              <WeatherDetails currentData={currentData} />
-              <DailyForecast weatherTypes={weatherTypes} dailyData={dailyData} />
+              <CurrentWeather
+                units={units}
+                currentData={currentData}
+                weatherTypes={weatherTypes}
+              />
+              <WeatherDetails units={units} currentData={currentData} />
+              <DailyForecast
+                units={units}
+                weatherTypes={weatherTypes}
+                dailyData={dailyData}
+              />
             </div>
             <div className={figmaTailwing.layout.rightColumn}>
-              <HourlyForecast weatherTypes={weatherTypes} hourlyData={hourlyData} />
+              <HourlyForecast
+                units={units}
+                weatherTypes={weatherTypes}
+                hourlyData={hourlyData}
+              />
             </div>
           </div>
         </main>

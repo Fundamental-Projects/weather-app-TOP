@@ -1,16 +1,17 @@
 import { useState } from "react";
 import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing";
 
-function UnitToggle({
-  temperatureUnit,
-  setTemperatureUnit,
-  windUnit,
-  setWindUnit,
-  precipitationUnit,
-  setPrecipitationUnit,
-}) {
+function UnitToggle({ units, dispatch }) {
   const [isUnitOpen, setIsUnitOpen] = useState(false);
+
   const stylesControls = figmaTailwing.controls; // Kısaltma için
+
+  const isMetric =
+    units.temperature === "celsius" &&
+    units.windSpeed === "km/h" &&
+    units.precipitation === "mm";
+
+  const nextSystem = isMetric ? "imperial" : "metric";
 
   function handleClick() {
     setIsUnitOpen((isUnitOpen) => !isUnitOpen);
@@ -25,8 +26,12 @@ function UnitToggle({
 
       {isUnitOpen && (
         <div className={`${stylesControls.menu} absolute right-0 top-[calc(100%+10px)]`}>
-          <button className={stylesControls.switchButton} type="button">
-            Switch to Imperial
+          <button
+            className={stylesControls.switchButton}
+            onClick={() => dispatch({ type: "unitSystemChanged", payload: nextSystem })}
+            type="button"
+          >
+            Switch to {nextSystem}
           </button>
 
           <fieldset className={stylesControls.menuGroup}>
@@ -39,8 +44,10 @@ function UnitToggle({
                   type="radio"
                   name="temperature"
                   value="celsius"
-                  checked={temperatureUnit === "celsius"}
-                  onChange={(e) => setTemperatureUnit(e.target.value)}
+                  checked={units.temperature === "celsius"}
+                  onChange={(e) =>
+                    dispatch({ type: "temperatureChanged", payload: e.target.value })
+                  }
                 />
                 <span>Celsius (°C)</span>
                 <img
@@ -56,8 +63,10 @@ function UnitToggle({
                   type="radio"
                   name="temperature"
                   value="fahrenheit"
-                  checked={temperatureUnit === "fahrenheit"}
-                  onChange={(e) => setTemperatureUnit(e.target.value)}
+                  checked={units.temperature === "fahrenheit"}
+                  onChange={(e) =>
+                    dispatch({ type: "temperatureChanged", payload: e.target.value })
+                  }
                 />
                 <span>Fahrenheit (°F)</span>
                 <img
@@ -80,8 +89,10 @@ function UnitToggle({
                   type="radio"
                   name="windSpeed"
                   value="km/h"
-                  checked={windUnit === "km/h"}
-                  onChange={(e) => setWindUnit(e.target.value)}
+                  checked={units.windSpeed === "km/h"}
+                  onChange={(e) =>
+                    dispatch({ type: "windSpeedUnitChanged", payload: e.target.value })
+                  }
                 />
                 <span>km/h</span>
                 <img
@@ -97,8 +108,10 @@ function UnitToggle({
                   type="radio"
                   name="windSpeed"
                   value="mph"
-                  checked={windUnit === "mph"}
-                  onChange={(e) => setWindUnit(e.target.value)}
+                  checked={units.windSpeed === "mph"}
+                  onChange={(e) =>
+                    dispatch({ type: "windSpeedUnitChanged", payload: e.target.value })
+                  }
                 />
                 <span>mph</span>
                 <img
@@ -121,8 +134,10 @@ function UnitToggle({
                   type="radio"
                   name="precipitation"
                   value="mm"
-                  checked={precipitationUnit === "mm"}
-                  onChange={(e) => setPrecipitationUnit(e.target.value)}
+                  checked={units.precipitation === "mm"}
+                  onChange={(e) =>
+                    dispatch({ type: "precipitationChanged", payload: e.target.value })
+                  }
                 />
                 <span>Millimeters (mm)</span>
                 <img
@@ -138,8 +153,10 @@ function UnitToggle({
                   type="radio"
                   name="precipitation"
                   value="inch"
-                  checked={precipitationUnit === "inch"}
-                  onChange={(e) => setPrecipitationUnit(e.target.value)}
+                  checked={units.precipitation === "inch"}
+                  onChange={(e) =>
+                    dispatch({ type: "precipitationChanged", payload: e.target.value })
+                  }
                 />
                 <span>Inches (in)</span>
                 <img
