@@ -27,22 +27,22 @@ function HourlyForecast() {
     },
     {
       time: "2026-08-15T04:00",
-      weatherCode: 4,
+      weatherCode: 61,
       temperature: 18,
     },
     {
       time: "2026-08-15T05:00",
-      weatherCode: 5,
+      weatherCode: 53,
       temperature: 17,
     },
     {
       time: "2026-08-15T06:00",
-      weatherCode: 6,
+      weatherCode: 45,
       temperature: 16,
     },
     {
       time: "2026-08-15T07:00",
-      weatherCode: 7,
+      weatherCode: 80,
       temperature: 15,
     },
   ];
@@ -99,17 +99,19 @@ function HourlyForecast() {
         {/* Dropdown menu eklenecek */}
       </div>
       <ul className={stylesHourly.rows}>
-        {hourlyData.map((index, hour) => {
-          <li key={index} className={stylesHourly.row}>
-            <img
-              className={stylesHourly.icon}
-              src={figmaAssets[weatherTypes[hour.weatherCode]]}
-            />
-            <time dateTime={hour.time} className={stylesHourly.time}>
-              {formatHour(hour.time)}
-            </time>
-            <span className={stylesHourly.temperature}>{hour.temperature}°</span>
-          </li>;
+        {hourlyData.map((hour, index) => {
+          return (
+            <li key={index} className={stylesHourly.row}>
+              <img
+                className={stylesHourly.icon}
+                src={figmaAssets[weatherTypes[hour.weatherCode]]}
+              />
+              <time dateTime={hour.time} className={stylesHourly.time}>
+                {formatHour(hour.time)}
+              </time>
+              <span className={stylesHourly.temperature}>{hour.temperature}°</span>
+            </li>
+          );
         })}
       </ul>
       <div className={stylesHourly.scrollbar} aria-hidden="true" />
