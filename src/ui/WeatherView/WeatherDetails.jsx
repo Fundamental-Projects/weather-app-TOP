@@ -5,7 +5,7 @@ import {
 } from "../../features/units/conversationUnits";
 import figmaTailwing from "../../styles/figmaStlyes/figmaTailwing";
 
-function WeatherDetails({ currentData, units, query }) {
+function WeatherDetails({ currentData, units, isPending }) {
   const stylesWeather = figmaTailwing.weather; // Kısaltma için
 
   return (
@@ -13,7 +13,7 @@ function WeatherDetails({ currentData, units, query }) {
       <div className={stylesWeather.detailCard}>
         <dt className={stylesWeather.detailLabel}>Feels Like</dt>
         <dd className={stylesWeather.detailValue}>
-          {query.isPending
+          {isPending
             ? "-"
             : `${convertTemperature(
                 currentData.apparentTemperature,
@@ -26,26 +26,26 @@ function WeatherDetails({ currentData, units, query }) {
       <div className={stylesWeather.detailCard}>
         <dt className={stylesWeather.detailLabel}>Humidity</dt>
         <dd className={stylesWeather.detailValue}>
-          {query.isPending ? "-" : `${currentData.humidity}%`}
+          {isPending ? "-" : `${currentData.humidity}%`}
         </dd>
       </div>
 
       <div className={stylesWeather.detailCard}>
         <dt className={stylesWeather.detailLabel}>Wind</dt>
         <dd className={stylesWeather.detailValue}>
-          {query.isPending
+          {isPending
             ? "-"
             : `${convertSpeed(currentData.windSpeed, units.windSpeed).toFixed(0)}
-          ${units.windSpeed}}`}
+          ${units.windSpeed}`}
         </dd>
       </div>
 
       <div className={stylesWeather.detailCard}>
         <dt className={stylesWeather.detailLabel}>Precipitation</dt>
         <dd className={stylesWeather.detailValue}>
-          {query.isPending
+          {isPending
             ? "-"
-            : `${convertPrecipation(currentData.precipitation, units.precipitation)}}
+            : `${convertPrecipation(currentData.precipitation, units.precipitation)}
           ${units.precipitation}`}
         </dd>
       </div>

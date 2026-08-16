@@ -1,19 +1,19 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
-import { formatHour, formatWeekday } from "../../helper/formatTime";
+import { formatWeekday } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
 import { useState } from "react";
 
-function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, query }) {
+function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const activeDate = query.isPending ? null : (selectedDate ?? dailyData[0]?.time);
+  const activeDate = isPending ? null : (selectedDate ?? dailyData[0]?.time);
 
-  const selectedDayHours = query.isPending
+  const selectedDayHours = isPending
     ? []
     : hourlyData.filter((hour) => hour.time.startsWith(activeDate));
 
-  const visibleHours = query.isPending
+  const visibleHours = isPending
     ? Array.from({ length: 8 })
     : selectedDayHours.slice(15, 23);
 
@@ -36,7 +36,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, query }) {
           className={figmaTailwing.controls.dayButton}
           type="button"
         >
-          <span>{query.isPending ? "-" : formatWeekday(activeDate, "long")}</span>
+          <span>{isPending ? "-" : formatWeekday(activeDate, "long")}</span>
           <img
             className={figmaTailwing.controls.chevron}
             src={figmaAssets.dropdown}
@@ -52,7 +52,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, query }) {
                   className={stylesHourly.dayMenuOption}
                   type="button"
                 >
-                  {query.isPending ? [] : formatWeekday(day.time, "long")}
+                  {isPending ? [] : formatWeekday(day.time, "long")}
                 </button>
               </li>
             ))}
@@ -63,7 +63,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, query }) {
         {visibleHours.map((hour, index) => {
           return (
             <li key={index} className={stylesHourly.row}>
-              {!query.isPending && (
+              {!isPending && (
                 <>
                   <img
                     className={stylesHourly.icon}
@@ -71,10 +71,10 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, query }) {
                     alt={weatherTypes[hour.weatherCode]}
                   />
                   <time dateTime={hour.time} className={stylesHourly.time}>
-                    {query.isPending ? "—" : formatWeekday(activeDate, "long")}
+                    {isPending ? "—" : formatWeekday(activeDate, "long")}
                   </time>
                   <span className={stylesHourly.temperature}>
-                    {query.isPending
+                    {isPending
                       ? ""
                       : `${convertTemperature(hour.temperature, units.temperature).toFixed(0)}°`}
                   </span>

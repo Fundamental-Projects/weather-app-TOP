@@ -4,7 +4,15 @@ import DailyForecast from "./WeatherView/DailyForecast";
 import HourlyForecast from "./WeatherView/HourlyForecast";
 import WeatherDetails from "./WeatherView/WeatherDetails";
 
-function WeatherView({ units, weatherTypes, currentData, dailyData, hourlyData, query }) {
+function WeatherView({
+  units,
+  weatherTypes,
+  currentData,
+  dailyData,
+  hourlyData,
+  isPending,
+  isLoading,
+}) {
   return (
     <div className={figmaTailwing.layout.content}>
       <div className={figmaTailwing.layout.leftColumn}>
@@ -12,14 +20,15 @@ function WeatherView({ units, weatherTypes, currentData, dailyData, hourlyData, 
           units={units}
           currentData={currentData}
           weatherTypes={weatherTypes}
-          query={query}
+          isPending={isPending}
+          isLoading={isLoading}
         />
-        <WeatherDetails units={units} currentData={currentData} query={query} />
+        <WeatherDetails units={units} currentData={currentData} isPending={isPending} />
         <DailyForecast
           units={units}
           weatherTypes={weatherTypes}
           dailyData={dailyData}
-          query={query}
+          isPending={isPending}
         />
       </div>
       <div className={figmaTailwing.layout.rightColumn}>
@@ -28,7 +37,7 @@ function WeatherView({ units, weatherTypes, currentData, dailyData, hourlyData, 
           weatherTypes={weatherTypes}
           hourlyData={hourlyData}
           dailyData={dailyData}
-          query={query}
+          isPending={isPending}
         />
       </div>
     </div>

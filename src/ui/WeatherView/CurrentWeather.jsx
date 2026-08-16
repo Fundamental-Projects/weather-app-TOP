@@ -6,38 +6,32 @@ import { formatFullDate } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
 import Spinner from "../Spinner";
 
-function CurrentWeather({ weatherTypes, currentData, units, query }) {
+function CurrentWeather({ weatherTypes, currentData, units, isPending, isLoading }) {
   const stylesWeather = figmaTailwing.weather; // Kısaltma için
 
-  if (query.isPending) return <Spinner />;
-  const convertedTemperature = convertTemperature(
-    currentData.temperature,
-    units.temperature,
-  );
+  if (isLoading) return <Spinner />;
 
-  const location = {
-    city: "Adana",
-    country: "Republic of Turkiye",
-  };
   return (
     <section className={stylesWeather.todayCard} style={figmaInlineStyles.todayCard}>
       <div className={stylesWeather.location}>
         <h2 className={stylesWeather.locationName}>
-          {location.city}, {location.country}
+          {isPending ? "" : `${location.city},${location.country}`}
         </h2>
-        <time className={stylesWeather.date} dateTime={currentData.time}>
-          {formatFullDate(currentData.time)}
+        <time className={stylesWeather.date} dateTime={isPending ? "" : currentData.time}>
+          {isPending ? "" : formatFullDate(currentData.time)}
         </time>
       </div>
 
       <div className={stylesWeather.temperature}>
         <img
           className={stylesWeather.temperatureIcon}
-          src={figmaAssets[weatherTypes[currentData.weatherCode]]}
-          alt={weatherTypes[currentData.weatherCode]}
+          src={isPending ? "" : figmaAssets[weatherTypes[currentData.weatherCode]]}
+          alt={isPending ? "" : weatherTypes[currentData.weatherCode]}
         />
         <p className={stylesWeather.temperatureValue}>
-          {convertedTemperature.toFixed(0)}°
+          {isPending
+            ? ""
+            : `${convertTemperature(currentData.temperature, units.temperature).toFixed(0)}°`}
         </p>
       </div>
     </section>

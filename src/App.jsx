@@ -13,7 +13,12 @@ import WeatherView from "./ui/WeatherView";
 function App() {
   const [units, dispatch] = useReducer(unitsReducer, initialUnits);
   const [searchTerm, setSearchTerm] = useState("");
-  const query = useQuery({
+  const {
+    isLoading,
+    isPending,
+    data: weatherData,
+    error,
+  } = useQuery({
     queryKey: ["weather", searchTerm],
     queryFn: () => fetchWeatherByLocation(searchTerm),
     retry: 1,
@@ -22,10 +27,11 @@ function App() {
     enabled: Boolean(searchTerm.trim()),
   });
 
-  const currentData = query.isPending ? null : query.data?.current;
-  const dailyData = query.isPending ? [] : (query.data?.daily ?? []);
-  const hourlyData = query.isPending ? [] : (query.data?.hourly ?? []);
+  const currentData = isPending ? null : weatherData?.current;
+  const dailyData = isPending ? [] : (weatherData?.daily ?? []);
+  const hourlyData = isPending ? [] : (weatherData?.hourly ?? []);
   // console.log(currentData);
+  // console.log(query);
 
   const weatherTypes = {
     0: "sunny",
@@ -81,7 +87,8 @@ function App() {
               weatherTypes={weatherTypes}
               dailyData={dailyData}
               hourlyData={hourlyData}
-              query={query}
+              isPending={isPending}
+              isLoading={isLoading}
             />
             {/* <div className={figmaTailwing.layout.content}>
                 <div className={figmaTailwing.layout.leftColumn}>
