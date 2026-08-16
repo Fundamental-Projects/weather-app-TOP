@@ -44,7 +44,7 @@ function WeatherDetails({ currentData, units, isPending }) {
         <dd className={stylesWeather.detailValue}>
           {isPending
             ? "-"
-            : `${convertPrecipation(currentData.precipitation, units.precipitation)}
+            : `${convertPrecipation(currentData.precipitation, units.precipitation).toFixed(0)}
           ${units.precipitation}`}
         </dd>
       </div>

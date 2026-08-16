@@ -10,9 +10,9 @@ function DailyForecast({ weatherTypes, dailyData, units }) {
       <h2 className={stylesDaily.title}>Daily forecast</h2>
 
       <ul className={stylesDaily.grid}>
-        {dailyData.map((daily, index) => {
+        {dailyData.map((daily) => {
           return (
-            <li key={index} className={stylesDaily.card}>
+            <li key={daily.time} className={stylesDaily.card}>
               <span className={stylesDaily.day}>{formatWeekday(daily.time)}</span>
               <img
                 className={stylesDaily.icon}

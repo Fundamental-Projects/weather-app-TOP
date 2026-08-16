@@ -60,9 +60,9 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
         )}
       </div>
       <ul className={stylesHourly.rows}>
-        {visibleHours.map((hour, index) => {
+        {visibleHours.map((hour) => {
           return (
-            <li key={index} className={stylesHourly.row}>
+            <li key={hour.time} className={stylesHourly.row}>
               {!isPending && (
                 <>
                   <img
