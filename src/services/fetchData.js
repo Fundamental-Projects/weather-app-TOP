@@ -71,22 +71,22 @@ async function fetchWeatherData(latitude, longitude) {
   }
 }
 
-async function fetchWeatherByLocation(searchTerm) {
-  const locations = await fetchGeoData(searchTerm);
-  const geoData = locations[0];
+// async function fetchWeatherByLocation(searchTerm) {
+//   const locations = await fetchGeoData(searchTerm);
+//   const geoData = locations[0];
 
-  if (!geoData) return null;
+//   if (!geoData) return null;
 
-  const { latitude, longitude, name: city, country, timezone } = geoData;
-  const location = { city, country, timezone, latitude, longitude };
-  const weather = await fetchWeatherData(latitude, longitude);
-  const results = { location, weather };
+//   const { latitude, longitude, name: city, country, timezone } = geoData;
+//   const location = { city, country, timezone, latitude, longitude };
+//   const weather = await fetchWeatherData(latitude, longitude);
+//   const results = { location, weather };
 
-  // console.log(location);
-  // console.log(weather);
+//   // console.log(location);
+//   // console.log(weather);
 
-  return processWeatherData(results);
-}
+//   return processWeatherData(results);
+// }
 
 async function fetchWeatherForLocation(location) {
   const weather = await fetchWeatherData(location.latitude, location.longitude);
@@ -101,7 +101,7 @@ async function fetchLocationSuggestions(searchText) {
   const suggestionsData = await fetchGeoData(searchText);
 
   const suggestions = suggestionsData.map((suggestion) => {
-    const { id, name, country, latitude, longitude } = suggestion;
+    const { id, name, country, latitude, longitude, timezone } = suggestion;
 
     return {
       id,
@@ -109,6 +109,7 @@ async function fetchLocationSuggestions(searchText) {
       country,
       latitude,
       longitude,
+      timezone,
     };
   });
 
@@ -167,4 +168,4 @@ function processWeatherData({ location, weather }) {
 }
 // fetchWeatherByLocation("adana");
 
-export { fetchWeatherByLocation, fetchLocationSuggestions, fetchWeatherForLocation };
+export { fetchLocationSuggestions, fetchWeatherForLocation };

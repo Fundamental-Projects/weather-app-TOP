@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing";
 import { fetchLocationSuggestions } from "../services/fetchData";
 
-function SearchForm({ onSearch, onLocationSelect }) {
+function SearchForm({ onSearch, onNoResults, onSearchChange }) {
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [selectedSuggestion, setSelectedSuggestion] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   const normalizedSearch = debouncedSearch.trim();
   const suggestionsQuery = useQuery({
     queryKey: ["suggestions", normalizedSearch],
@@ -14,7 +16,7 @@ function SearchForm({ onSearch, onLocationSelect }) {
     retry: 1,
     refetchOnWindowFocus: false,
     staleTime: 10 * 60 * 1000,
-    enabled: normalizedSearch.length >= 2,
+    enabled: isSearchOpen && normalizedSearch.length >= 2,
   });
 
   useEffect(() => {
@@ -40,24 +42,42 @@ function SearchForm({ onSearch, onLocationSelect }) {
   function handleInputChange(event) {
     setIsSearchOpen(true);
     setInputValue(event.target.value);
+    setSelectedSuggestion(null);
+    onSearchChange();
   }
 
   function handleSuggestionClick(location) {
     setInputValue(`${location.city}, ${location.country}`);
     setIsSearchOpen(false);
-    onLocationSelect(location);
+    setSelectedSuggestion(location);
   }
 
+  //! Bu fonksiyon incelenecek
   function handleSubmit(event) {
     event.preventDefault();
 
-    const normalizedInput = inputValue.trim();
+    if (selectedSuggestion) {
+      onSearchChange();
+      onSearch(selectedSuggestion);
 
-    if (!normalizedInput) return;
+      setInputValue("");
+      setSelectedSuggestion(null);
+      return;
+    }
 
-    onSearch(normalizedInput);
+    const isQueryCurrent = normalizedInput === normalizedSearch;
+
+    if (!isQueryCurrent || suggestionsQuery.isFetching) return;
+
+    if (suggestionsQuery.isSuccess && suggestions.length === 0) {
+      onNoResults();
+      return;
+    }
+
+    onSearch(selectedSuggestion);
 
     setInputValue("");
+    setSelectedSuggestion(null);
   }
   return (
     <form onSubmit={handleSubmit} className={figmaTailwing.search.form}>

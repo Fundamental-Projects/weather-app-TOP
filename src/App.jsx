@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { initialUnits, unitsReducer } from "./features/units/unitsReducer";
 
-import { fetchWeatherByLocation, fetchWeatherForLocation } from "./services/fetchData";
+import { fetchWeatherForLocation } from "./services/fetchData";
 
 import figmaTailwing from "./styles/figmaStlyes/figmaTailwing";
 import Header from "./ui/Header";
@@ -14,8 +14,8 @@ import NoResultsState from "./ui/NoResultsState";
 
 function App() {
   const [units, dispatch] = useReducer(unitsReducer, initialUnits);
-  const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [isNoResults, setIsNoResults] = useState(false);
   const {
     isLoading,
     isPending,
@@ -32,7 +32,7 @@ function App() {
     refetchOnWindowFocus: false,
     staleTime: 10 * 60 * 1000,
   });
-  const isNoResults = isSuccess && weatherData === null;
+
   const currentData = isPending ? null : weatherData?.current;
   const dailyData = isPending ? [] : (weatherData?.daily ?? []);
   const hourlyData = isPending ? [] : (weatherData?.hourly ?? []);
@@ -94,8 +94,9 @@ function App() {
                   How's the sky looking today?
                 </h1>
                 <SearchForm
-                  onSearch={setSearchTerm}
-                  onLocationSelect={setSelectedLocation}
+                  onSearch={setSelectedLocation}
+                  onNoResults={() => setIsNoResults(true)}
+                  onSearchChange={() => setIsNoResults(false)}
                 />
 
                 {isNoResults ? (

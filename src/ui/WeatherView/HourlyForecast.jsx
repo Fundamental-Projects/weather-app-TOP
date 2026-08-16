@@ -27,7 +27,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
 
   return (
     <section className={stylesHourly.panel}>
-      <div className={stylesHourly.header}>
+      <div ref={containerRef} className={stylesHourly.header}>
         <h2 className={stylesHourly.title}>Hourly forecast</h2>
         <button
           aria-expanded={isOpen}
@@ -45,7 +45,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
           />
         </button>
         {isOpen && (
-          <ul ref={containerRef} id="days-dropdown" className={stylesHourly.dayMenu}>
+          <ul id="days-dropdown" className={stylesHourly.dayMenu}>
             {dailyData.map((day) => (
               <li key={day.time}>
                 <button
