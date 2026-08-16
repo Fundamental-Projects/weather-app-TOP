@@ -2,7 +2,7 @@ import { useReducer, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { initialUnits, unitsReducer } from "./features/units/unitsReducer";
 
-import { fetchWeatherByLocation } from "./services/fetchData";
+import { fetchWeatherByLocation, fetchWeatherForLocation } from "./services/fetchData";
 
 import figmaTailwing from "./styles/figmaStlyes/figmaTailwing";
 import Header from "./ui/Header";
@@ -15,6 +15,7 @@ import NoResultsState from "./ui/NoResultsState";
 function App() {
   const [units, dispatch] = useReducer(unitsReducer, initialUnits);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const {
     isLoading,
     isPending,
@@ -24,23 +25,20 @@ function App() {
     refetch,
     isFetching,
   } = useQuery({
-    queryKey: ["weather", searchTerm],
-    queryFn: () => fetchWeatherByLocation(searchTerm),
+    queryKey: ["weather", selectedLocation?.latitude, selectedLocation?.longitude],
+    queryFn: () => fetchWeatherForLocation(selectedLocation),
+    enabled: Boolean(selectedLocation),
     retry: 1,
     refetchOnWindowFocus: false,
     staleTime: 10 * 60 * 1000,
-    enabled: Boolean(searchTerm.trim()),
   });
   const isNoResults = isSuccess && weatherData === null;
   const currentData = isPending ? null : weatherData?.current;
   const dailyData = isPending ? [] : (weatherData?.daily ?? []);
   const hourlyData = isPending ? [] : (weatherData?.hourly ?? []);
   const location = isPending ? null : weatherData?.location;
-  console.log(currentData);
-  console.log(dailyData);
-  console.log(hourlyData);
-  console.log(location);
-  console.log(weatherData);
+
+  console.log(selectedLocation);
 
   const weatherTypes = {
     0: "sunny",
@@ -95,7 +93,10 @@ function App() {
                 <h1 className={figmaTailwing.layout.title}>
                   How's the sky looking today?
                 </h1>
-                <SearchForm onSearch={setSearchTerm} />
+                <SearchForm
+                  onSearch={setSearchTerm}
+                  onLocationSelect={setSelectedLocation}
+                />
 
                 {isNoResults ? (
                   <NoResultsState />

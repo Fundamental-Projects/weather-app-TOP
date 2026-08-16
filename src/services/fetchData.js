@@ -27,7 +27,7 @@ async function fetchGeoData(searchTerm) {
 
     const data = await response.json();
 
-    const result = data.results?.[0];
+    const result = data.results ?? [];
 
     return result;
   } catch (error) {
@@ -72,19 +72,47 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 async function fetchWeatherByLocation(searchTerm) {
-  const geoData = await fetchGeoData(searchTerm);
+  const locations = await fetchGeoData(searchTerm);
+  const geoData = locations[0];
 
   if (!geoData) return null;
 
   const { latitude, longitude, name: city, country, timezone } = geoData;
-  const location = { city, country, timezone };
+  const location = { city, country, timezone, latitude, longitude };
   const weather = await fetchWeatherData(latitude, longitude);
-  const result = { location, weather };
+  const results = { location, weather };
 
   // console.log(location);
   // console.log(weather);
 
-  return processWeatherData(result);
+  return processWeatherData(results);
+}
+
+async function fetchWeatherForLocation(location) {
+  const weather = await fetchWeatherData(location.latitude, location.longitude);
+
+  return processWeatherData({
+    location,
+    weather,
+  });
+}
+
+async function fetchLocationSuggestions(searchText) {
+  const suggestionsData = await fetchGeoData(searchText);
+
+  const suggestions = suggestionsData.map((suggestion) => {
+    const { id, name, country, latitude, longitude } = suggestion;
+
+    return {
+      id,
+      city: name,
+      country,
+      latitude,
+      longitude,
+    };
+  });
+
+  return suggestions;
 }
 
 function processWeatherData({ location, weather }) {
@@ -139,4 +167,4 @@ function processWeatherData({ location, weather }) {
 }
 // fetchWeatherByLocation("adana");
 
-export { fetchWeatherByLocation };
+export { fetchWeatherByLocation, fetchLocationSuggestions, fetchWeatherForLocation };
