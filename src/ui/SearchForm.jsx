@@ -4,10 +4,15 @@ import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing"
 function SearchForm({ onSearch }) {
   const [inputValue, setInputValue] = useState("");
   function handleSubmit(event) {
-    if (!inputValue) return;
     event.preventDefault();
 
-    onSearch(inputValue.trim());
+    const normalizedInput = inputValue.trim();
+
+    if (!normalizedInput) return;
+
+    onSearch(normalizedInput);
+
+    setInputValue("");
   }
   return (
     <form onSubmit={handleSubmit} className={figmaTailwing.search.form}>

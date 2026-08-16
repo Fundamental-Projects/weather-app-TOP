@@ -1,8 +1,9 @@
-import { useState } from "react";
 import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing";
+import useDropdown from "../hooks/useDropdown";
 
 function UnitToggle({ units, dispatch }) {
-  const [isUnitOpen, setIsUnitOpen] = useState(false);
+  // const [isUnitOpen, setIsUnitOpen] = useState(false);
+  const { isOpen: isUnitOpen, toggle, containerRef, triggerRef } = useDropdown();
 
   const stylesControls = figmaTailwing.controls; // Kısaltma için
 
@@ -13,19 +14,26 @@ function UnitToggle({ units, dispatch }) {
 
   const nextSystem = isMetric ? "imperial" : "metric";
 
-  function handleClick() {
-    setIsUnitOpen((isUnitOpen) => !isUnitOpen);
-  }
   return (
-    <div className="relative">
-      <button onClick={handleClick} className={stylesControls.unitsButton} type="button">
+    <div ref={containerRef} className="relative">
+      <button
+        aria-expanded={isUnitOpen}
+        aria-controls={isUnitOpen ? "units-dropdown" : undefined}
+        ref={triggerRef}
+        onClick={toggle}
+        className={stylesControls.unitsButton}
+        type="button"
+      >
         <img className={stylesControls.unitsIcon} src={figmaAssets.units} alt="" />
         <span className={stylesControls.unitsLabel}>Units</span>
         <img className={stylesControls.unitsChevron} src={figmaAssets.dropdown} alt="" />
       </button>
 
       {isUnitOpen && (
-        <div className={`${stylesControls.menu} absolute right-0 top-[calc(100%+10px)]`}>
+        <div
+          id="units-dropdown"
+          className={`${stylesControls.menu} absolute right-0 top-[calc(100%+10px)]`}
+        >
           <button
             className={stylesControls.switchButton}
             onClick={() => dispatch({ type: "unitSystemChanged", payload: nextSystem })}

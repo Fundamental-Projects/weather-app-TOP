@@ -2,10 +2,11 @@ import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwi
 import { formatHour, formatWeekday } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
 import { useState } from "react";
+import useDropdown from "../../hooks/useDropdown";
 
 function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const { isOpen, toggle, close, containerRef, triggerRef } = useDropdown();
 
   const activeDate = isPending ? null : (selectedDate ?? dailyData[0]?.time);
 
@@ -19,12 +20,9 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
 
   const stylesHourly = figmaTailwing.hourly;
 
-  function handleOpenClick() {
-    setIsOpen((isOpen) => !isOpen);
-  }
-
   function handleDateClick(day) {
     setSelectedDate(day);
+    close();
   }
 
   return (
@@ -32,7 +30,10 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
       <div className={stylesHourly.header}>
         <h2 className={stylesHourly.title}>Hourly forecast</h2>
         <button
-          onClick={handleOpenClick}
+          aria-expanded={isOpen}
+          aria-controls={isOpen ? "days-dropdown" : undefined}
+          ref={triggerRef}
+          onClick={toggle}
           className={figmaTailwing.controls.dayButton}
           type="button"
         >
@@ -44,7 +45,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
           />
         </button>
         {isOpen && (
-          <ul className={stylesHourly.dayMenu}>
+          <ul ref={containerRef} id="days-dropdown" className={stylesHourly.dayMenu}>
             {dailyData.map((day) => (
               <li key={day.time}>
                 <button
@@ -60,9 +61,9 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
         )}
       </div>
       <ul className={stylesHourly.rows}>
-        {visibleHours.map((hour) => {
+        {visibleHours.map((hour, index) => {
           return (
-            <li key={hour.time} className={stylesHourly.row}>
+            <li key={index} className={stylesHourly.row}>
               {!isPending && (
                 <>
                   <img
