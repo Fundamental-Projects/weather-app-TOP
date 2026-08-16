@@ -95,12 +95,13 @@ function App() {
                 <h1 className={figmaTailwing.layout.title}>
                   How's the sky looking today?
                 </h1>
+                <SearchForm onSearch={setSearchTerm} />
+
                 {isNoResults ? (
                   <NoResultsState />
                 ) : (
                   <>
                     {" "}
-                    <SearchForm onSearch={setSearchTerm} />
                     <WeatherView
                       units={units}
                       currentData={currentData}
