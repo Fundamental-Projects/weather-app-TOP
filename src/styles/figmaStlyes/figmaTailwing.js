@@ -208,11 +208,12 @@ export const figmaTailwing = Object.freeze({
     button:
       "inline-flex h-14 items-center justify-center rounded-[12px] bg-[#4658D9] px-6 text-[20px] font-medium leading-[1.2] text-white hover:bg-[#2B1B9C] focus-visible:outline-none focus-visible:shadow-[0_0_0_3px_#02012C,0_0_0_5px_#4658D9] md:w-[114px]",
     dropdown:
-      "absolute left-0 top-[64px] z-30 flex h-[184px] w-full flex-col items-start gap-1 rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)] md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
+      "absolute left-0 top-[132px] z-30 flex h-[184px] w-full flex-col items-start gap-1 rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 shadow-[0_8px_16px_0_rgba(2,1,44,0.32)] md:top-[64px] md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
     option:
       "flex h-[39px] w-full items-center gap-[10px] rounded-[8px] px-2 py-[10px] text-left text-[16px] font-medium leading-[1.2] text-white hover:bg-[#302F4A] focus-visible:bg-[#302F4A] focus-visible:outline-none",
+    optionActive: "bg-[#302F4A]",
     progress:
-      "absolute left-0 top-[64px] z-30 flex h-[55px] w-full items-center gap-[10px] rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 text-[16px] font-medium leading-[1.2] text-white md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
+      "absolute left-0 top-[132px] z-30 flex h-[55px] w-full items-center gap-[10px] rounded-[12px] border border-[#302F4A] bg-[#262540] p-2 text-[16px] font-medium leading-[1.2] text-white md:top-[64px] md:w-[calc(100%_-_130px)] min-[1440px]:w-[526px]",
   },
 
   // UST MENULER VE DROPDOWN DURUMLARI

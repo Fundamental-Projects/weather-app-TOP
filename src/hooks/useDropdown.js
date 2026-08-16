@@ -10,7 +10,9 @@ function useDropdown() {
 
     function handleKeyDown(event) {
       if (event.key === "Escape") {
+        event.preventDefault();
         setIsOpen(false);
+        triggerRef.current?.focus();
       }
     }
 

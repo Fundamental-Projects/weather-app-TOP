@@ -19,7 +19,6 @@ function App() {
   const {
     isLoading,
     isPending,
-    isSuccess,
     data: weatherData,
     error,
     refetch,
