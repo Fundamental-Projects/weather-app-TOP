@@ -9,6 +9,8 @@ import Header from "./ui/Header";
 import SearchForm from "./ui/SearchForm";
 import UnitToggle from "./ui/UnitToggle";
 import WeatherView from "./ui/WeatherView";
+import ErrorFallback from "./ui/ErrorFallback";
+import NoResultsState from "./ui/NoResultsState";
 
 function App() {
   const [units, dispatch] = useReducer(unitsReducer, initialUnits);
@@ -16,8 +18,11 @@ function App() {
   const {
     isLoading,
     isPending,
+    isSuccess,
     data: weatherData,
     error,
+    refetch,
+    isFetching,
   } = useQuery({
     queryKey: ["weather", searchTerm],
     queryFn: () => fetchWeatherByLocation(searchTerm),
@@ -26,12 +31,16 @@ function App() {
     staleTime: 10 * 60 * 1000,
     enabled: Boolean(searchTerm.trim()),
   });
-
+  const isNoResults = isSuccess && weatherData === null;
   const currentData = isPending ? null : weatherData?.current;
   const dailyData = isPending ? [] : (weatherData?.daily ?? []);
   const hourlyData = isPending ? [] : (weatherData?.hourly ?? []);
-  // console.log(currentData);
-  // console.log(query);
+  const location = isPending ? null : weatherData?.location;
+  console.log(currentData);
+  console.log(dailyData);
+  console.log(hourlyData);
+  console.log(location);
+  console.log(weatherData);
 
   const weatherTypes = {
     0: "sunny",
@@ -78,42 +87,35 @@ function App() {
           <Header>
             <UnitToggle units={units} dispatch={dispatch} />
           </Header>
-          <main className={figmaTailwing.layout.main}>
-            <h1 className={figmaTailwing.layout.title}>How's the sky looking today?</h1>
-            <SearchForm searchTerm={searchTerm} onSearch={setSearchTerm} />
-            <WeatherView
-              units={units}
-              currentData={currentData}
-              weatherTypes={weatherTypes}
-              dailyData={dailyData}
-              hourlyData={hourlyData}
-              isPending={isPending}
-              isLoading={isLoading}
-            />
-            {/* <div className={figmaTailwing.layout.content}>
-                <div className={figmaTailwing.layout.leftColumn}>
-                  <CurrentWeather
-                    units={units}
-                    currentData={currentData}
-                    weatherTypes={weatherTypes}
-                  />
-                  <WeatherDetails units={units} currentData={currentData} />
-                  <DailyForecast
-                    units={units}
-                    weatherTypes={weatherTypes}
-                    dailyData={dailyData}
-                  />
-                </div>
-                <div className={figmaTailwing.layout.rightColumn}>
-                  <HourlyForecast
-                    units={units}
-                    weatherTypes={weatherTypes}
-                    hourlyData={hourlyData}
-                    dailyData={dailyData}
-                  />
-                </div>
-              </div> */}
-          </main>
+          {error ? (
+            <ErrorFallback onRetry={refetch} isFetching={isFetching} />
+          ) : (
+            <>
+              <main className={figmaTailwing.layout.main}>
+                <h1 className={figmaTailwing.layout.title}>
+                  How's the sky looking today?
+                </h1>
+                {isNoResults ? (
+                  <NoResultsState />
+                ) : (
+                  <>
+                    {" "}
+                    <SearchForm onSearch={setSearchTerm} />
+                    <WeatherView
+                      units={units}
+                      currentData={currentData}
+                      weatherTypes={weatherTypes}
+                      dailyData={dailyData}
+                      hourlyData={hourlyData}
+                      isPending={isPending}
+                      isLoading={isLoading}
+                      location={location}
+                    />
+                  </>
+                )}
+              </main>
+            </>
+          )}
         </div>
       </div>
     </>

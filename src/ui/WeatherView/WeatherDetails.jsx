@@ -18,8 +18,7 @@ function WeatherDetails({ currentData, units, isPending }) {
             : `${convertTemperature(
                 currentData.apparentTemperature,
                 units.temperature,
-              ).toFixed(0)}
-          °`}
+              ).toFixed(0)}°`}
         </dd>
       </div>
 

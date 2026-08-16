@@ -1,5 +1,5 @@
 import figmaTailwing, { figmaAssets } from "../../styles/figmaStlyes/figmaTailwing";
-import { formatWeekday } from "../../helper/formatTime";
+import { formatHour, formatWeekday } from "../../helper/formatTime";
 import { convertTemperature } from "../../features/units/conversationUnits";
 import { useState } from "react";
 
@@ -71,7 +71,7 @@ function HourlyForecast({ weatherTypes, hourlyData, units, dailyData, isPending 
                     alt={weatherTypes[hour.weatherCode]}
                   />
                   <time dateTime={hour.time} className={stylesHourly.time}>
-                    {isPending ? "—" : formatWeekday(activeDate, "long")}
+                    {isPending ? "—" : formatHour(hour.time)}
                   </time>
                   <span className={stylesHourly.temperature}>
                     {isPending

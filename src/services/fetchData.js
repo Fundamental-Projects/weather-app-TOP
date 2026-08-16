@@ -28,9 +28,6 @@ async function fetchGeoData(searchTerm) {
     const data = await response.json();
 
     const result = data.results?.[0];
-    if (!result) {
-      throw new Error("Location not found");
-    }
 
     return result;
   } catch (error) {
@@ -75,13 +72,11 @@ async function fetchWeatherData(latitude, longitude) {
 }
 
 async function fetchWeatherByLocation(searchTerm) {
-  const {
-    latitude,
-    longitude,
-    name: city,
-    country,
-    timezone,
-  } = await fetchGeoData(searchTerm);
+  const geoData = await fetchGeoData(searchTerm);
+
+  if (!geoData) return null;
+
+  const { latitude, longitude, name: city, country, timezone } = geoData;
   const location = { city, country, timezone };
   const weather = await fetchWeatherData(latitude, longitude);
   const result = { location, weather };

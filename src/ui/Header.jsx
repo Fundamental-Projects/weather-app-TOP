@@ -1,5 +1,4 @@
 import figmaTailwing, { figmaAssets } from "../styles/figmaStlyes/figmaTailwing";
-import UnitToggle from "./UnitToggle";
 
 function Header({ children }) {
   const stylesLayout = figmaTailwing.layout; // Kısaltma için

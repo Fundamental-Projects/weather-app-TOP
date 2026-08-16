@@ -12,6 +12,7 @@ function WeatherView({
   hourlyData,
   isPending,
   isLoading,
+  location,
 }) {
   return (
     <div className={figmaTailwing.layout.content}>
@@ -22,6 +23,7 @@ function WeatherView({
           weatherTypes={weatherTypes}
           isPending={isPending}
           isLoading={isLoading}
+          location={location}
         />
         <WeatherDetails units={units} currentData={currentData} isPending={isPending} />
         <DailyForecast
